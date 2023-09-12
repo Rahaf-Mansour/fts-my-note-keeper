@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 });
 
 // Getting one note by id
-router.get("/:id", getNote, (req, res) => {
+router.get("/:id", getNote, async (req, res) => {
   res.json(res.note);
 });
 
@@ -32,7 +32,20 @@ router.post("/", async (req, res) => {
 });
 
 // Updating one note by id
-router.patch("/:id", getNote, (req, res) => {});
+router.patch("/:id", getNote, async (req, res) => {
+  try {
+    if (req.body.title != null) {
+      res.note.title = req.body.title;
+    }
+    if (req.body.content != null) {
+      res.note.content = req.body.content;
+    }
+    const updatedNote = await res.note.save();
+    res.json(updatedNote);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 
 // Deleting one note by id
 router.delete("/:id", getNote, async (req, res) => {
