@@ -36,4 +36,19 @@ router.patch("/:id", (req, res) => {});
 
 // Deleting one note by id
 router.delete("/:id", (req, res) => {});
+
+async function getNote(req, res, next) {
+  let note;
+  try {
+    note = await note.findById(req.params.id);
+    if (note == null) {
+      return res.status(404).json({ error: "The note isn't found." });
+    }
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+  res.note = note;
+  next();
+}
+
 module.exports = router;
