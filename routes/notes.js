@@ -2,10 +2,14 @@ const express = require("express");
 const router = express.Router();
 
 // Getting all notes
-router.get("/", (req, res) => {});
+router.get("/", (req, res) => {
+  res.send("Test the route");
+});
 
 // Getting one note by id
-router.get("/:id", (req, res) => {});
+router.get("/:id", (req, res) => {
+  res.send(req.params.id);
+});
 
 // Creating a new one
 router.post("/", (req, res) => {});
