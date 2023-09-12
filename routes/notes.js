@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const Note = require("../models/note-model.js");
 
 // Getting all notes
 router.get("/", (req, res) => {
