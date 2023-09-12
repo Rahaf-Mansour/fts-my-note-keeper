@@ -13,8 +13,8 @@ router.get("/", async (req, res) => {
 });
 
 // Getting one note by id
-router.get("/:id", (req, res) => {
-  res.send(req.params.id);
+router.get("/:id", getNote, (req, res) => {
+  res.json(res.note);
 });
 
 // Creating a new one
@@ -32,15 +32,22 @@ router.post("/", async (req, res) => {
 });
 
 // Updating one note by id
-router.patch("/:id", (req, res) => {});
+router.patch("/:id", getNote, (req, res) => {});
 
 // Deleting one note by id
-router.delete("/:id", (req, res) => {});
+router.delete("/:id", getNote, async (req, res) => {
+  try {
+    await res.note.deleteOne();
+    res.json({ message: "Deleted note" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 async function getNote(req, res, next) {
   let note;
   try {
-    note = await note.findById(req.params.id);
+    note = await Note.findById(req.params.id);
     if (note == null) {
       return res.status(404).json({ error: "The note isn't found." });
     }

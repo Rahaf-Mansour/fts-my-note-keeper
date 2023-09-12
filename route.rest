@@ -2,7 +2,9 @@ GET http://localhost:3000/notes
 
 ###
 
-GET http://localhost:3000/notes/15
+GET http://localhost:3000/notes/6500d9093638ca859793d418
+
+
 
 ###
 
@@ -10,6 +12,11 @@ POST http://localhost:3000/notes
 Content-Type: application/json
 
 {
-    "title": "My first note",
-    "content": "Don't give up!"
+    "title": "My second note",
+    "content": "You're the BEST!"
 }
+
+
+###
+
+DELETE http://localhost:3000/notes/6500c8fc7aa2e0169fb22012
