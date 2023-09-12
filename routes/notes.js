@@ -3,8 +3,13 @@ const router = express.Router();
 const Note = require("../models/note-model.js");
 
 // Getting all notes
-router.get("/", (req, res) => {
-  res.send("Test the route");
+router.get("/", async (req, res) => {
+  try {
+    const notes = await Note.find();
+    res.json(notes);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 // Getting one note by id
