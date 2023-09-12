@@ -18,7 +18,18 @@ router.get("/:id", (req, res) => {
 });
 
 // Creating a new one
-router.post("/", (req, res) => {});
+router.post("/", async (req, res) => {
+  try {
+    const note = new Note({
+      title: req.body.title,
+      content: req.body.content,
+    });
+    const newNote = await note.save();
+    res.status(201).json(newNote);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 
 // Updating one note by id
 router.patch("/:id", (req, res) => {});
