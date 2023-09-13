@@ -1,5 +1,5 @@
 # My Note Keeper REST API
-A REST API using Node.js, Express.js, and MongoDB for a note-keeping application. It allows users to perform CRUD operations on their notes and it's also connected to a MongoDB database and uses Mongoose for object modelling.
+A REST API using Node.js, Express.js, and MongoDB for a note-keeping application. It allows users to perform CRUD operations on their notes and connect to a MongoDB database and uses Mongoose for object modelling, it also contains error handling with a suitable status code and a descriptive error message.
 
 ## Each note contains:
 1. Title
