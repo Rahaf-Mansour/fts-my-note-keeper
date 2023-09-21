@@ -1,6 +1,23 @@
 # My Note Keeper REST API
 A REST API using Node.js, Express.js, and MongoDB for a note-keeping application. It allows users to perform CRUD operations on their notes and connect to a MongoDB database and uses Mongoose for object modelling, it also contains error handling with a suitable status code and a descriptive error message.
 
+## Installing Dependencies And Getting Started:
+First of all, you should clone the repository and then install the needed dependencies.  Here is a step-by-step guide on how to install and run your project locally.
+
+1. Clone the repository:
+```
+   git clone https://github.com/Rahaf-Mansour/my-note-keeper
+   cd my-note-keeper
+```
+2. Install dependencies
+```
+npm i express mongoose
+npm i --save-dev dotnet nodemon
+```
+3. Run the server
+```
+npm run devStart
+```
 ## Each note contains:
 1. Title
 2. Content
